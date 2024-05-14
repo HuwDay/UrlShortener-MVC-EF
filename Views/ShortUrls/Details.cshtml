@@ -1,0 +1,31 @@
+﻿@model UrlShortener.Models.ShortUrl
+
+@{
+    ViewData["Title"] = "Details";
+    var strShortUrl = Context.Request.Scheme + "://" + Context.Request.Host + "/" + Model.UrlShortCode;
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>ShortUrl</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Url)
+        </dt>
+        <dd class = "col-sm-3">
+            @Html.DisplayFor(model => model.Url)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UrlShortCode)
+        </dt>
+        <dd class="col-sm-3">
+            <a href="@strShortUrl">@strShortUrl</a>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
